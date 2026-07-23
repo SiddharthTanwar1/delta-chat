@@ -1,0 +1,26 @@
+[
+  {
+    "kind": "modified",
+    "type": "dimension",
+    "sheet": 0,
+    "text_anchor": "TORQUE SPEC",
+    "expected_new_text": "60",
+    "description": "Torque spec changed from 45 to 60 ft-lb"
+  },
+  {
+    "kind": "modified",
+    "type": "note",
+    "sheet": 0,
+    "text_anchor": "FLANGE GASKET REPLACED",
+    "expected_new_text": "2025-01-15",
+    "description": "Gasket replacement date updated"
+  },
+  {
+    "kind": "modified",
+    "type": "text",
+    "sheet": 0,
+    "text_anchor": "REVISION",
+    "expected_new_text": "REVISION B",
+    "description": "Revision label changed A -> B"
+  }
+]

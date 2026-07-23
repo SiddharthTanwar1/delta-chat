@@ -1,0 +1,3 @@
+{"question": "What is the torque spec on the valve station sheet?", "expects_delta_refs": false, "expected_keywords": ["60"]}
+{"question": "Did the torque spec change between revisions?", "expects_delta_refs": true, "expected_keywords": ["45", "60"]}
+{"question": "When was the flange gasket replaced according to the latest revision?", "expects_delta_refs": false, "expected_keywords": ["2025"]}

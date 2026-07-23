@@ -1,0 +1,5 @@
+{"question": "What changed on sheet 1?", "expects_delta_refs": true, "expected_keywords": ["R0.50", "R0.75", "NOTE 2", "NOTE 3", "VALVE V-12"]}
+{"question": "Did any dimensions change near the pump?", "expects_delta_refs": true, "expected_keywords": ["R0.50", "R0.75"]}
+{"question": "Was anything removed between the two revisions?", "expects_delta_refs": true, "expected_keywords": ["NOTE 2"]}
+{"question": "What does note 1 say?", "expects_delta_refs": false, "expected_keywords": ["ALL DIMENSIONS IN INCHES"]}
+{"question": "What changed on sheet 5?", "expects_delta_refs": false, "expected_keywords": ["not", "no"], "unanswerable": true}

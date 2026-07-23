@@ -1,0 +1,29 @@
+[
+  {
+    "kind": "modified",
+    "type": "dimension",
+    "sheet": 0,
+    "text_anchor": "24.000",
+    "expected_new_text": "30.000",
+    "description": "Linear dimension changed from 24.000 to 30.000"
+  },
+  {
+    "kind": "modified",
+    "type": "moved",
+    "sheet": 0,
+    "text_anchor": null,
+    "description": "Piping line endpoint moved"
+  },
+  {
+    "kind": "removed",
+    "type": "text",
+    "sheet": 0,
+    "text_anchor": "TEMP LABEL"
+  },
+  {
+    "kind": "added",
+    "type": "block",
+    "sheet": 0,
+    "text_anchor": "VALVE_SYM"
+  }
+]

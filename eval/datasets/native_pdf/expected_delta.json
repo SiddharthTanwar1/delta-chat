@@ -1,0 +1,52 @@
+[
+  {
+    "kind": "modified",
+    "type": "dimension",
+    "sheet": 0,
+    "text_anchor": "R0.50",
+    "expected_new_text": "R0.75",
+    "description": "Radius near the pump changed from R0.50 to R0.75"
+  },
+  {
+    "kind": "removed",
+    "type": "note",
+    "sheet": 0,
+    "text_anchor": "NOTE 2: FIELD VERIFY ALL DIMENSIONS PRIOR TO FABRICATION"
+  },
+  {
+    "kind": "added",
+    "type": "note",
+    "sheet": 0,
+    "text_anchor": "NOTE 3: TORQUE ALL FASTENERS TO 45 FT-LB"
+  },
+  {
+    "kind": "modified",
+    "type": "moved",
+    "sheet": 0,
+    "text_anchor": "VALVE V-12",
+    "description": "Valve V-12 label moved"
+  },
+  {
+    "kind": "modified",
+    "type": "moved",
+    "sheet": 0,
+    "text_anchor": null,
+    "description": "Valve circle geometry moved alongside its label"
+  },
+  {
+    "kind": "modified",
+    "type": "note",
+    "sheet": 0,
+    "text_anchor": "DWG NO. PS-101-01",
+    "expected_new_text": "REV B",
+    "description": "Title block drawing-header revision label changed REV A -> REV B"
+  },
+  {
+    "kind": "modified",
+    "type": "text",
+    "sheet": 0,
+    "text_anchor": "REVISION:",
+    "expected_new_text": "REVISION: B",
+    "description": "Title block revision field changed"
+  }
+]
