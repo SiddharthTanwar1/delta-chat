@@ -1,0 +1,118 @@
+{
+  "pid_a": "dxf-A",
+  "pid_b": "dxf-B",
+  "revision_a": "A",
+  "revision_b": "B",
+  "format_a": "dwg",
+  "format_b": "dwg",
+  "counts": {
+    "modified": 2,
+    "removed": 1,
+    "added": 1
+  },
+  "total": 4,
+  "items": [
+    {
+      "id": "D-002",
+      "kind": "modified",
+      "element_type": "moved",
+      "sheet": 0,
+      "sheet_label": "Model",
+      "description": "Geometry '(unlabeled element)' moved",
+      "confidence": 0.952,
+      "bbox_a": [
+        30.0,
+        20.0,
+        80.0,
+        20.0
+      ],
+      "bbox_b": [
+        30.0,
+        20.0,
+        80.0,
+        50.0
+      ],
+      "text_a": null,
+      "text_b": null,
+      "evidence": {
+        "element_a_id": "0bbff38639bd",
+        "element_b_id": "63abf7d5d2fa",
+        "match_score": 0.9524
+      },
+      "llm_assisted": false
+    },
+    {
+      "id": "D-003",
+      "kind": "modified",
+      "element_type": "dimension",
+      "sheet": 0,
+      "sheet_label": "Model",
+      "description": "Dimension changed: 24.000 \u2192 30.000",
+      "confidence": 0.79,
+      "bbox_a": [
+        30.0,
+        20.0,
+        54.0,
+        30.639
+      ],
+      "bbox_b": [
+        30.0,
+        20.0,
+        60.0,
+        30.639
+      ],
+      "text_a": "24.000",
+      "text_b": "30.000",
+      "evidence": {
+        "element_a_id": "58ac622d6e24",
+        "element_b_id": "9093c38edd6d",
+        "match_score": 0.7905
+      },
+      "llm_assisted": false
+    },
+    {
+      "id": "D-004",
+      "kind": "removed",
+      "element_type": "text",
+      "sheet": 0,
+      "sheet_label": "Model",
+      "description": "Text removed: 'TEMP LABEL'",
+      "confidence": 1.0,
+      "bbox_a": [
+        85.0,
+        4.165,
+        110.854,
+        8.0
+      ],
+      "bbox_b": null,
+      "text_a": "TEMP LABEL",
+      "text_b": null,
+      "evidence": {
+        "element_a_id": "d412846377ee"
+      },
+      "llm_assisted": false
+    },
+    {
+      "id": "D-001",
+      "kind": "added",
+      "element_type": "block",
+      "sheet": 0,
+      "sheet_label": "Model",
+      "description": "Block added: 'VALVE_SYM'",
+      "confidence": 1.0,
+      "bbox_a": null,
+      "bbox_b": [
+        53.0,
+        23.0,
+        57.0,
+        27.0
+      ],
+      "text_a": null,
+      "text_b": "VALVE_SYM",
+      "evidence": {
+        "element_b_id": "9a55b55dcb0d"
+      },
+      "llm_assisted": false
+    }
+  ]
+}
