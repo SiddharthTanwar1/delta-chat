@@ -8,6 +8,14 @@ carries a citation back to a specific document location or delta entry.
 
 Built for the "Applied AI Engineer — Document Delta & Grounded Chat" take-home.
 
+> **Status note:** everything below is implemented and verified end to end *except* the
+> live LLM call in chat/eval, which is code-complete and reaches the Anthropic API
+> correctly (auth succeeds) but the API key available during development had a zero
+> credit balance, so a real model response was never observed. See
+> [Live verification status](#live-verification-status) for exactly what was and wasn't
+> exercised, and what a reviewer needs to do to see the last mile (funding any Anthropic
+> key and running `make chat`).
+
 ## Quickstart
 
 ```bash
@@ -196,12 +204,50 @@ previous run so a regression shows up automatically.
 The `native_pdf` miss is exactly the known limitation above, caught by the harness doing
 its job.
 
-### Judge validation
+### Live verification status
 
-*(This section is filled in with real numbers once `make eval` runs with a live
-ANTHROPIC_API_KEY — see the note at the top of this README if you're reading this before
-that step ran. The judge's 0/0.5/1 scores on the `qa.jsonl` sets are spot-checked by hand
-against the `expected_keywords`/`unanswerable` labels in each set.)*
+Honest accounting of what was actually exercised versus what's implemented but unverified,
+in the spirit of "candid failure reporting" this assignment asks for:
+
+| Layer | Verified how | Result |
+|---|---|---|
+| Ingestion (3 formats) | Ran against real synthesized files | ✅ all 3 formats, `tests/test_ingest_adapters.py` |
+| Delta engine | Scored against hand-authored ground truth | ✅ 1.00 F1 on 2/3 pairs, 0.77 on the third (documented limitation) |
+| Observability | Real trace files inspected | ✅ see `docs/example_trace_*.json` below |
+| Markup overlay (bonus) | Rendered PDF opened and visually inspected | ✅ boxes land on the correct elements |
+| Chat retrieval (BM25) | Called `RetrievalIndex.search()` directly, no LLM needed | ✅ `tests/test_retrieval_index.py` — this step *found and fixed two real bugs* (below) |
+| Chat LLM call + citation validation | Ran `make chat` against the live Anthropic API | ⚠️ **reached the API correctly** (request well-formed, auth succeeded) but every call was rejected with `400 credit balance too low` — no funded key was available. The prompt/response/citation-validation code path has never observed a real model response. |
+| Eval LLM-judge scoring | Would call the same API | ⚠️ same blocker — `make eval-no-llm` (delta-only) is fully verified; `make eval` (adds chat scoring) is not |
+
+**To finish verification:** put a funded key in `.env` and run `make chat PAIR=native_pdf`
+or `make eval`. Nothing else should need to change — the failure above is external (zero
+account balance), not a code defect; the request that got rejected is inspectable
+end-to-end in `docs/example_trace_chat_turn_api_error.json`.
+
+**Two real bugs found and fixed by this verification pass, before it hit the funding wall:**
+1. `src/ingest/classify.py`: a bare-number regex (`^\d+(\.\d+)?\"?$`) was misclassifying
+   small table-cell integers (parts-list qty column: "1", "2", "4") as `dimension`
+   elements. Tightened to require a decimal point or an inch mark, so bare item numbers
+   fall through to `text` instead. Verified with `tests/test_retrieval_index.py::test_bare_table_numbers_are_not_classified_as_dimension`.
+2. `src/chat/index.py`: BM25 has no stemming, so the query "did any **dimensions**
+   change" (plural) failed to retrieve a chunk containing "**dimension**" (singular) —
+   including the actual `R0.50 → R0.75` delta, one of the assignment's own example
+   questions. Fixed with a minimal, safe trailing-`s` stem applied at both index and
+   query time. Verified with `tests/test_retrieval_index.py::test_plural_query_retrieves_singular_dimension_change`.
+
+Both are exactly the kind of thing "ship without live LLM verification" risks missing —
+which is the reason this whole section exists instead of just claiming chat "works."
+
+### Example captured traces (real, not illustrative)
+
+- [`docs/example_trace_delta_run.json`](docs/example_trace_delta_run.json) — a full
+  ingest→delta→report trace with per-stage timings.
+- [`docs/example_trace_chat_turn_api_error.json`](docs/example_trace_chat_turn_api_error.json) —
+  a chat turn where retrieval succeeded (`status: "ok"`, real retrieved chunk ids) and the
+  subsequent LLM call failed; the span records `status: "error"` with the exact Anthropic
+  error message and a full stack trace, correlated by `trace_id` — this is the observability
+  requirement's "failures are captured and traceable, not swallowed" demonstrated against a
+  genuine failure, not a synthetic one.
 
 ## Repo layout
 

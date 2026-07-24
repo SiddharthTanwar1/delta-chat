@@ -13,7 +13,8 @@ _DIM_PATTERNS = [
     r"\bR\s*\d+(\.\d+)?\b",                    # radius callouts
     r"±\s*\d+(\.\d+)?",                        # tolerances
     r"\d+(\.\d+)?\s*°",                        # angles
-    r"^\d+(\.\d+)?\"?$",                       # bare number, optionally with "
+    r"^\d+\.\d+\"?$",                          # bare decimal, optionally with "
+    r"^\d{2,}\"$",                             # bare multi-digit inch callout, e.g. 24"
 ]
 _DIM_RE = re.compile("|".join(f"(?:{p})" for p in _DIM_PATTERNS), re.IGNORECASE)
 

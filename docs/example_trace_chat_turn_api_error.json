@@ -1,0 +1,38 @@
+{
+  "trace_id": "d8eed3790602",
+  "kind": "chat_turn",
+  "start_ts": 1784873881.5609632,
+  "end_ts": 1784873882.521333,
+  "duration_ms": 960.37,
+  "status": "error",
+  "spans": [
+    {
+      "name": "retrieve",
+      "trace_id": "d8eed3790602",
+      "span_id": "05338326",
+      "start_ts": 1784873881.560983,
+      "end_ts": 1784873881.5612211,
+      "duration_ms": 0.24,
+      "status": "ok",
+      "input": "{\"question\": \"Did any dimensions change near the pump?\"}",
+      "output": "null",
+      "meta": {},
+      "error": null
+    },
+    {
+      "name": "chat_answer",
+      "trace_id": "d8eed3790602",
+      "span_id": "005d7970",
+      "start_ts": 1784873881.5612512,
+      "end_ts": 1784873882.5212429,
+      "duration_ms": 959.99,
+      "status": "error",
+      "input": "{\"system\": \"You are a grounded assistant for engineering document revisions. You are given\\nexcerpts from two document revisions (PID-A = base, PID-B = revised) and a delta report describing\\nwhat changed between them.\\n\\nRules:\\n- Answer ONLY using the provided context. Never invent content that isn't there.\\n- Every factual claim must end with a citation tag copied EXACTLY from the context labels shown,\\n  e.g. [PID-A sheet1] or [D-005]. Do not invent citation ids.\\n- If the context does not contain enough information to answer, say so plainly\\n  (\\\"I don't have enough information in the provided documents to answer that.\\\") -- do not guess.\\n- Be concise and specific (mention actual values/sheet numbers when present).\", \"user\": \"Context:\\n[PID-A sheet1] (text) PUMP CENTRIFUGAL\\n[PID-B s...<395 more chars>",
+      "output": "null",
+      "meta": {
+        "model": "claude-sonnet-5"
+      },
+      "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdLPtvokG42z7FKiNunCS'}\nTraceback (most recent call last):\n  File \"/Users/siddharthtanwar/Claude/Projects/delta-chat/src/observability/tracing.py\", line 58, in span\n    yield s\n  File \"/Users/siddharthtanwar/Claude/Projects/delta-chat/src/chat/llm.py\", line 65, in complete\n    result = _call()\n             ^^^^^^^\n  File \"/Users/siddharthtanwar/Claude/Projects/delta-chat/src/chat/llm.py\", line 49, in _call\n    resp = self._client.messages.create(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/siddharthtanwar/Claude/Projects/delta-chat/.venv/lib/python3.12/site-packages/anthropic/_utils/_utils.py\", line 294, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/siddharthtanwar/Claude/Projects/delta-chat/.venv/lib/python3.12/site-packages/anthropic/resources/messages/messages.py\", line 1050, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"/Users/siddharthtanwar/Claude/Projects/delta-chat/.venv/lib/python3.12/site-packages/anthropic/_base_client.py\", line 1536, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nanthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdLPtvokG42z7FKiNunCS'}\n"
+    }
+  ]
+}

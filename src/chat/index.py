@@ -26,8 +26,18 @@ class Chunk:
     ref: dict                # enough to render a precise citation
 
 
+def _stem(token: str) -> str:
+    """Minimal suffix stripping so "dimensions" retrieves "dimension" and
+    vice versa -- BM25 has no stemming built in and this is cheap, safe
+    (only plain trailing-s plurals), and directly fixes a real retrieval
+    miss found while testing (see README)."""
+    if len(token) > 4 and token.endswith("s") and not token.endswith("ss"):
+        return token[:-1]
+    return token
+
+
 def _tokenize(text: str) -> list[str]:
-    return re.findall(r"[a-z0-9°'\"±⌀ø.]+", text.lower())
+    return [_stem(t) for t in re.findall(r"[a-z0-9°'\"±⌀ø.]+", text.lower())]
 
 
 def _doc_chunks(doc: Document, label: str) -> list[Chunk]:

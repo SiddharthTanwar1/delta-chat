@@ -1,0 +1,75 @@
+{
+  "trace_id": "675b9bcb1175",
+  "kind": "delta_run",
+  "start_ts": 1784873880.872736,
+  "end_ts": 1784873881.033939,
+  "duration_ms": 161.2,
+  "status": "ok",
+  "spans": [
+    {
+      "name": "ingest_a",
+      "trace_id": "675b9bcb1175",
+      "span_id": "a22ed7d9",
+      "start_ts": 1784873880.872758,
+      "end_ts": 1784873881.022889,
+      "duration_ms": 150.13,
+      "status": "ok",
+      "input": "{\"path\": \"/Users/siddharthtanwar/Claude/Projects/delta-chat/data/samples/native_pdf/A.pdf\", \"pid\": \"native_pdf-A\"}",
+      "output": "{\"format\": \"pdf_native\", \"sheets\": 1, \"elements\": 29}",
+      "meta": {},
+      "error": null
+    },
+    {
+      "name": "ingest_b",
+      "trace_id": "675b9bcb1175",
+      "span_id": "422d5dc5",
+      "start_ts": 1784873881.0229278,
+      "end_ts": 1784873881.028092,
+      "duration_ms": 5.16,
+      "status": "ok",
+      "input": "{\"path\": \"/Users/siddharthtanwar/Claude/Projects/delta-chat/data/samples/native_pdf/B.pdf\", \"pid\": \"native_pdf-B\"}",
+      "output": "{\"format\": \"pdf_native\", \"sheets\": 1, \"elements\": 29}",
+      "meta": {},
+      "error": null
+    },
+    {
+      "name": "align_sheet",
+      "trace_id": "675b9bcb1175",
+      "span_id": "1ed50acb",
+      "start_ts": 1784873881.028131,
+      "end_ts": 1784873881.033238,
+      "duration_ms": 5.11,
+      "status": "ok",
+      "input": "{\"sheet\": 0, \"n_a\": 29, \"n_b\": 29}",
+      "output": "null",
+      "meta": {},
+      "error": null
+    },
+    {
+      "name": "compute_delta",
+      "trace_id": "675b9bcb1175",
+      "span_id": "d6ef8cfd",
+      "start_ts": 1784873881.028119,
+      "end_ts": 1784873881.033333,
+      "duration_ms": 5.21,
+      "status": "ok",
+      "input": "null",
+      "output": "{\"total\": 6, \"added\": 0, \"removed\": 0, \"modified\": 6}",
+      "meta": {},
+      "error": null
+    },
+    {
+      "name": "write_report",
+      "trace_id": "675b9bcb1175",
+      "span_id": "ec82a335",
+      "start_ts": 1784873881.033362,
+      "end_ts": 1784873881.0339,
+      "duration_ms": 0.54,
+      "status": "ok",
+      "input": "{\"out_dir\": \"/Users/siddharthtanwar/Claude/Projects/delta-chat/reports/native_pdf\"}",
+      "output": "{\"json\": \"/Users/siddharthtanwar/Claude/Projects/delta-chat/reports/native_pdf/delta.json\", \"md\": \"/Users/siddharthtanwar/Claude/Projects/delta-chat/reports/native_pdf/delta.md\"}",
+      "meta": {},
+      "error": null
+    }
+  ]
+}
