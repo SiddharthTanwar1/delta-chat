@@ -1,4 +1,11 @@
+![Document Delta — Revision intelligence grounded in document evidence.](docs/assets/banner.svg)
+
 # Document Delta & Grounded Chat
+
+Inspect revisions, explain changes, and trace answers back to document evidence.
+
+[Quickstart](#quickstart) · [Architecture](#architecture-the-canonical-representation) · [Evaluation](#evaluation-harness) · [Verification limits](#live-verification-status) · [Demo](DEMO.md)
+
 
 Given two revisions of a technical document (native PDF, scanned PDF, or DXF/DWG), this
 system ingests both, computes a structured **delta** (added/removed/modified, with
